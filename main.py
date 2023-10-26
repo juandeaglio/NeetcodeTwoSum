@@ -32,13 +32,8 @@ class HashTwoSumStrategy(TwoSumStrategy, ABC):
                 hash_table[nums[i]] = i
 
 class Solution:
-    def __init__(self, strategy: TwoSumStrategy = None):
+    def __init__(self, strategy: TwoSumStrategy = HashTwoSumStrategy()):
         self.strategy = strategy
 
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        if len(nums) > 100000:
-            self.strategy = HashTwoSumStrategy()
-        else:
-            self.strategy = NaiveTwoSumStrategy()
-
         return self.strategy.find_two_sum(nums, target)
